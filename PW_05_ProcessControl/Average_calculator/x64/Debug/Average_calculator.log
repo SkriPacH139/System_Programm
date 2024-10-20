@@ -1,0 +1,3 @@
+﻿  Average_calculator.cpp
+E:\SystemProg\PW_05_ProcessControl\Average_calculator\Average_calculator.cpp(22,33): warning C4101: e: неиспользованная локальная переменная
+  Average_calculator.vcxproj -> E:\SystemProg\PW_05_ProcessControl\x64\Debug\Average_calculator.exe
