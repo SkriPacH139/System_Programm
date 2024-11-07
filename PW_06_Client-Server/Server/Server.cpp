@@ -20,17 +20,11 @@ int main() {
         return 1;
     }
 
-    // Установка атрибута дескриптора записи, чтобы он наследовался
-    /*if (!SetHandleInformation(hWrite, HANDLE_FLAG_INHERIT, 0)) {
-        cerr << "Не удалось установить атрибут дескриптора." << endl;
-        return 1;
-    }*/
-
     cout << "Отладочная информация: " << endl;
     cout << "-------------------------------------------------------------------------" << endl;
     cout << "Сервер: дескриптор для записи: " << hWrite << endl;
 
-    // Преобразование дескриптора записи в строку для передачи через командную строку
+    // Преобразование дескриптора записи
     string writeHandleStr = to_string(reinterpret_cast<uintptr_t>(hWrite));
 
     // Параметры для дочернего процесса
@@ -40,7 +34,7 @@ int main() {
     si.cb = sizeof(si);
     ZeroMemory(&pi, sizeof(pi));
 
-    // Командная строка для дочернего процесса с передачей дескриптора записи
+    // Командная строка для дочернего процесса
     string commandLine = "Client.exe " + writeHandleStr;
 
     // Запуск дочернего процесса
@@ -49,7 +43,7 @@ int main() {
         return 1;
     }
 
-    // Закрытие дескриптора записи, т.к. серверу он не нужен
+    // Закрытие дескриптора записи
     WaitForSingleObject(pi.hProcess, INFINITE);
     CloseHandle(hWrite);
 

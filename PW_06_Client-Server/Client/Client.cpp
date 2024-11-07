@@ -15,7 +15,6 @@ int main(int argc, char* argv[]) {
     // Получение дескриптора записи из командной строки
     HANDLE hWrite = reinterpret_cast<HANDLE>(strtoull(argv[1], nullptr, 10));
 
-    // Сообщение, которое клиент отправит серверу
     const char* message = "Привет от клиента!";
     DWORD bytesWritten;
 
